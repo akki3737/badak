@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ice_breaks.wav-10d8de6d0fbe23a9c4e3990d40251565.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice_breaks.wav"
+dest_files=[ "res://.import/ice_breaks.wav-10d8de6d0fbe23a9c4e3990d40251565.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/left.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/left_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/right.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/right_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/button.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/button_pressed.png" type="Texture" id=6]
+
+
+
+
+
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="left" type="TouchScreenButton" parent="." index="0"]
+
+position = Vector2( 103.243, 470.149 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_left"
+visibility_mode = 0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="right" type="TouchScreenButton" parent="." index="1"]
+
+position = Vector2( 255.637, 470.862 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_right"
+visibility_mode = 0
+
+[node name="attack" type="TouchScreenButton" parent="." index="2"]
+
+position = Vector2( 787.67, 475.171 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "fire"
+visibility_mode = 0
+
+
