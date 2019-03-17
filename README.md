@@ -1,9 +1,9 @@
 # badak
-##Installation Steps
+## Installation Steps
 
 From the bin folder, download &install the apk on your phone or tablet.
 
-##Story behind the game
+## Story behind the game
 
 Chota Raju always wanted to do something extraordinary and cool. He always dreamed to be a superhero and loved cycling across the GM Ground where he met Zhulie.
 As a kid he built a treehouse to have one of the best summer vacations with his closest friend Zhulie, the coolest and nicest girl he ever met. But since he lived far away from the city, he had lesser amount of resources to fill in the treehouse with cool stuff and impress Zhulie.
@@ -12,14 +12,14 @@ Chota Raju knew that this was his closest chance he could ever get to tell Zhuli
 
 WILL YOU HELP CHOTA RAJU GET HIS GIRL?
 
-##How to play?
+## How to play?
 
 Hit the obstacle with the weapon given in the side menus.
 Initially there are two pairs of weapon and obstacle. They are fire-water, ball-bat.
 Once you reach the bonus round(which occurs after every 100 pts scored), dodge the obstacles approaching towards the player.
 There are certain goodies present which gives the character special powers, these goodies can be collected during the bonus round.
 
-##List of obstacles and weapons:
+## List of obstacles and weapons:
 
 Obstacle        Weapon
 Fire            Water
