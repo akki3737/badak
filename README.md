@@ -20,11 +20,9 @@ Once you reach the bonus round(which occurs after every 100 pts scored), dodge t
 There are certain goodies present which gives the character special powers, these goodies can be collected during the bonus round.
 
 ## List of obstacles and weapons:
-
-Obstacle        Weapon
-Fire            Water
-Ball            Bat
-Ice Cube        Hammer
-Rock            Hammer
-Apple           Knife
+Fire-Water,
+Ball-Bat,
+Ice Cube-Hammer,
+Rock-Hammer,
+Apple-Knife.
 
