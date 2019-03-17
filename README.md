@@ -1,7 +1,7 @@
 # badak
 ## Installation Steps
 
-From the bin folder, download &install the apk on your phone or tablet.
+Look for the apk file in bin of the beta branch
 
 ## Story behind the game
 
