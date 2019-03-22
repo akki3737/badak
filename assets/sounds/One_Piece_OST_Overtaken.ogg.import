@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/One_Piece_OST_Overtaken.ogg-ce8e44af1cbbbf20625bf1eed30ef48b.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/One_Piece_OST_Overtaken.ogg"
+dest_files=[ "res://.import/One_Piece_OST_Overtaken.ogg-ce8e44af1cbbbf20625bf1eed30ef48b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,9 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://models/attackers/bat.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/cricket_bat.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation00.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation01.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation02.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation03.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation04.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation05.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation06.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation07.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation08.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation09.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation10.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation11.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/bat/sprite_bat_animation12.png" type="Texture" id=14]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "release",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 20.3805, 34.3163 )
@@ -24,15 +45,18 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="Sprite" type="Sprite" parent="Area2D" index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="Area2D" index="0"]
 
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "release"
+frame = 2
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 
 position = Vector2( -6.81622, -7.03997 )
 scale = Vector2( 1, 1.49157 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
 

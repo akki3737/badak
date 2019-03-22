@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://models/emmiters/ball.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ball.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/ball/sprite_ball_animation0.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/ball/sprite_ball_animation1.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/ball/sprite_ball_animation2.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 29.94, 22.6469 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -26,14 +38,24 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="Area2D" index="0"]
 
+scale = Vector2( 0.660765, 0.642329 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D/Sprite" index="0"]
+
+frames = SubResource( 1 )
+animation = "fall"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 
 position = Vector2( 0, -1.22727 )
 scale = Vector2( 1, 1.40836 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 
 

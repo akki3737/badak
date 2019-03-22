@@ -1,14 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/attackers/knife.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/knife.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/knife/knife_animation0.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/knife/knife_animation1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/knife/knife_animation2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/knife/knife_animation3.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/knife/knife_animation4.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/knife/knife_animation5.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/knife/knife_animation6.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/knife/knife_animation7.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "release",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -24,17 +40,20 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="Sprite" type="Sprite" parent="Area2D" index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="Area2D" index="0"]
 
 position = Vector2( 13.6115, 0 )
 scale = Vector2( 1.19445, 1 )
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "release"
+frame = 6
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 
 position = Vector2( 0.319462, 0.0278516 )
 scale = Vector2( 3.11607, 3.04713 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
 

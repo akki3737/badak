@@ -1,9 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/attackers/hammer.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/hammer_mjolnir.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-1.png.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-2.png.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-3.png.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-4.png.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-5.png.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-6.png.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-7.png.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-8.png.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-9.png.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-10.png.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-11.png.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-12.png.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-13.png.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/hammer/hammer_mjolnir_animation-14.png.png" type="Texture" id=15]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "release",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 53.6089, 34.3163 )
@@ -27,17 +49,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Area2D" index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="Area2D" index="0"]
 
 scale = Vector2( 0.637528, 0.754881 )
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "release"
+frame = 13
+playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 
 position = Vector2( -0.708636, 9.55626 )
 scale = Vector2( 0.661485, 1.71085 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
 

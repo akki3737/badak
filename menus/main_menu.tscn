@@ -1,15 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://menus/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/sounds/menu_selection.wav" type="AudioStream" id=2]
-[ext_resource path="res://menus/settings_menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/backgrounds/main_bg.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/buttons/START.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/buttons/STARTPRESSED.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/buttons/SETTINGS.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/buttons/SETTINGSPRESSED.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/buttons/EXIT.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/buttons/EXITPRESSED.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/buttons/howtoplay.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/buttons/howtoplaypressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/coin.png" type="Texture" id=11]
+[ext_resource path="res://menus/settings_menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sprites/backgrounds/tuts.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/play.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/bonus.png" type="Texture" id=15]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
-[node name="menu" type="Container" parent="." index="0"]
+[node name="bg_image" type="Sprite" parent="." index="0"]
 
+position = Vector2( 510.882, 304.189 )
+scale = Vector2( 0.541099, 0.57453 )
+texture = ExtResource( 2 )
+
+[node name="menu" type="Container" parent="." index="1"]
+
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -29,10 +51,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 429.0
-margin_top = 155.0
-margin_right = 503.0
-margin_bottom = 190.0
+margin_left = 446.0
+margin_top = 125.0
+margin_right = 529.0
+margin_bottom = 144.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -43,17 +65,18 @@ text = "High Score"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="menu" index="1"]
+[node name="high_score" type="RichTextLabel" parent="menu" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 535.0
-margin_top = 153.0
-margin_right = 575.0
-margin_bottom = 182.0
+margin_left = 517.0
+margin_top = 83.0
+margin_right = 587.0
+margin_bottom = 117.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -66,22 +89,22 @@ visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "0"
+text = ""
 scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 
-[node name="start" type="Button" parent="menu" index="2"]
+[node name="start" type="TextureButton" parent="menu" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 426.0
-margin_top = 195.0
-margin_right = 530.0
-margin_bottom = 226.0
+margin_left = 406.0
+margin_top = 239.0
+margin_right = 606.0
+margin_bottom = 295.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -93,37 +116,20 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Start"
-flat = false
-align = 1
-__meta__ = {
-"_edit_group_": true
-}
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="start" type="AudioStreamPlayer2D" parent="menu/start" index="0"]
-
-stream = ExtResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="settings" type="Button" parent="menu" index="3"]
+[node name="settings" type="TextureButton" parent="menu" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 423.0
-margin_top = 252.0
-margin_right = 527.0
-margin_bottom = 283.0
+margin_left = 411.0
+margin_top = 349.0
+margin_right = 611.0
+margin_bottom = 399.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -135,34 +141,20 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Settings"
-flat = false
-align = 1
-__meta__ = {
-"_edit_group_": true
-}
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="settings" type="AudioStreamPlayer2D" parent="menu/settings" index="0"]
-
-stream = ExtResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-
-[node name="exit" type="Button" parent="menu" index="4"]
+[node name="exit" type="TextureButton" parent="menu" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 423.0
-margin_top = 312.0
-margin_right = 527.0
-margin_bottom = 343.0
+margin_left = 410.0
+margin_top = 464.0
+margin_right = 610.0
+margin_bottom = 514.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -174,49 +166,210 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Exit"
-flat = false
-align = 1
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="howToPlay" type="TextureButton" parent="menu" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 752.0
+margin_top = 60.0
+margin_right = 952.0
+margin_bottom = 110.0
+rect_scale = Vector2( 0.7, 1 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="coins" type="Sprite" parent="menu" index="6"]
+
+position = Vector2( 461.613, 85.5505 )
+scale = Vector2( 0.511138, 0.440496 )
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="exit" type="AudioStreamPlayer2D" parent="menu/exit" index="0"]
+[node name="coins2" type="Sprite" parent="menu" index="7"]
 
-stream = ExtResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
+position = Vector2( 483.343, 80.0937 )
+scale = Vector2( 0.511138, 0.440496 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="settings_menu" parent="." index="1" instance=ExtResource( 3 )]
+[node name="coins3" type="Sprite" parent="menu" index="8"]
+
+position = Vector2( 476.686, 100.624 )
+scale = Vector2( 0.511138, 0.440496 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="settings_menu" parent="." index="2" instance=ExtResource( 12 )]
 
 visible = false
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+[node name="bg" type="AudioStreamPlayer2D" parent="." index="3"]
 
 stream = null
-volume_db = 0.0
+volume_db = -7.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Story" type="Sprite" parent="." index="4"]
+
+position = Vector2( 460.163, 299.941 )
+scale = Vector2( 1.11894, 1.25699 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Region", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="storyClose" type="Button" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 609.0
+margin_top = 43.0
+margin_right = 634.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "X"
+flat = false
+align = 1
+
+[node name="manual" type="Container" parent="." index="6"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 752.0
+margin_top = 60.0
+margin_right = 792.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Sprite" type="Sprite" parent="manual" index="0"]
+
+position = Vector2( -246.772, 237.575 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="manual" index="1"]
+
+visible = false
+position = Vector2( -246.772, 237.575 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button" type="Button" parent="manual" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -132.0
+margin_top = 18.0
+margin_right = -97.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "X"
+flat = false
+align = 1
+
+[node name="Button2" type="Button" parent="manual" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -157.0
+margin_top = 360.0
+margin_right = -122.0
+margin_bottom = 392.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Next"
+flat = false
+align = 1
 
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
-
-[connection signal="finished" from="menu/start/start" to="." method="_on_start_finished"]
 
 [connection signal="pressed" from="menu/settings" to="." method="_on_settings_pressed"]
 
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
 
-[connection signal="finished" from="menu/exit/exit" to="." method="_on_exit_finished"]
+[connection signal="pressed" from="menu/howToPlay" to="." method="_on_howToPlay_pressed"]
 
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
+[connection signal="pressed" from="storyClose" to="." method="_on_storyClose_pressed"]
+
+[connection signal="pressed" from="manual/Button" to="." method="_on_Button_pressed"]
+
+[connection signal="pressed" from="manual/Button2" to="." method="_on_Button2_pressed"]
 
 

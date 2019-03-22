@@ -14,6 +14,10 @@ func _on_Area2D_area_entered(area):
 	if(area.type == 'fire'):
 		collisionSound.stream = collision_sound
 		collisionSound.play()
-		queue_free()
-		node.points += 10
+		$WaterSprite.animation='collide'
+		$WaterSprite.play()
 
+func _on_AnimatedSprite_animation_finished():
+	queue_free()
+	node.points += 10
+	

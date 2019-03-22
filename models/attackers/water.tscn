@@ -1,26 +1,33 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://models/attackers/water.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/water-1.png.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/water-2.png.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/water-3.png.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/water-4.png.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/water/sprite_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/water/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/water/sprite_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/water/sprite_3.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/water/sprite_4.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/water/sprite_5.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
-
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "idle",
-"speed": 3.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 45.9482, 11.1372 )
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "collide",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "release",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -36,21 +43,21 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D" index="0"]
-
-position = Vector2( 1.67017, 2.43667 )
-frames = SubResource( 1 )
-animation = "idle"
-playing = true
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 visible = false
 position = Vector2( -3.70454, -2.10197 )
 scale = Vector2( 0.924317, 2.50547 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
+
+[node name="WaterSprite" type="AnimatedSprite" parent="Area2D" index="1"]
+
+frames = SubResource( 2 )
+animation = "release"
+playing = true
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="animation_finished" from="Area2D/WaterSprite" to="Area2D" method="_on_AnimatedSprite_animation_finished"]
 
 

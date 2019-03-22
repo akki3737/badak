@@ -8,9 +8,9 @@ var attack
 var leftDesination
 var middleDesination
 var rightDesination
-var speed = 5
+var speed = 4
 var speedTimer
-var is_fire
+var is_fire = false
 var knife = load('res://models/attackers/knife.tscn')
 #var fire = load('res://models/attackers/fire.tscn')
 var water = load('res://models/attackers/water.tscn')
@@ -19,8 +19,11 @@ var bat = load('res://models/attackers/bat.tscn')
 #var ice = load('res://models/attackers/ice.tscn')
 var throw_sound = load('res://assets/sounds/player_throws.wav')
 var pos = 2
+var current_pos = 2
 
 func _ready():
+	$Sprite.animation = 'idle'
+	$Sprite.play()
 	speedTimer =  Timer.new()
 	speedTimer.connect('timeout',self,'_on_timer_timeout3')
 	add_child(speedTimer)
@@ -35,47 +38,33 @@ func _ready():
 	attack3 = get_node('/root/Node2D/attack3')
 
 func _process(delta):
-	if(node.is_alive):
-		input()
 	if(pos == 1):
+		current_pos = 1
 		position.x = lerp(position.x,leftDesination.position.x,delta*speed)
 		if(is_fire):
 			attack1.add_child(attack.instance())
-			is_fire = false
+			is_fire=false
+
 	elif(pos == 2):
+		current_pos = 2
 		position.x = lerp(position.x,middleDesination.position.x,delta*speed)
 		if(is_fire):
 			attack2.add_child(attack.instance())
-			is_fire = false
+			is_fire=false
+
 	elif(pos == 3):
+		current_pos = 3
 		position.x = lerp(position.x,rightDesination.position.x,delta*speed)
 		if(is_fire):
 			attack3.add_child(attack.instance())
-			is_fire = false
-	
-	
-func input():
-	if(Input.is_action_pressed('ui_right')):
-		move_and_slide(Vector2(650,0),Vector2(0,0))
-	if(Input.is_action_pressed('ui_left')):
-		move_and_slide(Vector2(-650,0),Vector2(0,0))
-	if(Input.is_action_just_pressed('fire')):
-		$AudioStreamPlayer2D.stream = throw_sound
-		$AudioStreamPlayer2D.play()
-		if(node.pos == 1):
-			attack1.add_child(attack.instance())
-		elif(node.pos==2):
-			attack2.add_child(attack.instance())
-		elif(node.pos==3):
-			attack3.add_child(attack.instance())
+			is_fire=false
 		
 
+		
 func _on_knife_pressed():
 	attack = knife
- 
-func move(pos):
-	pass
 
+	
 func _on_hammer_pressed():
 	attack = hammer
 
@@ -91,21 +80,39 @@ func _on_Bat_pressed():
 
 
 func _on_left_pressed():
-	move(1)
-	pos = 1
+	if(current_pos == 1):
+		$Sprite.animation = 'throw'
+		$Sprite.play()
+	else:
+		$Sprite.animation = 'left_run'
+		$Sprite.play()
 	is_fire = true
+	pos = 1
 
 
 func _on_middle_pressed():
-	move(2)
-	pos = 2
+	if(current_pos == 2):
+		$Sprite.animation = 'throw'
+		$Sprite.play()
+	elif(current_pos == 1):
+		$Sprite.animation = 'right_run'
+		$Sprite.play()
+	else:
+		$Sprite.animation = 'left_run'
+		$Sprite.play()
 	is_fire = true
+	pos = 2
 
 
 func _on_right_pressed():
-	move(3)
-	pos = 3
+	if(current_pos == 3):
+		$Sprite.animation = 'throw'
+		$Sprite.play()
+	else:
+		$Sprite.animation = 'right_run'
+		$Sprite.play()
 	is_fire = true
+	pos = 3
 
 
 func _on_2xSpeed_pressed():
@@ -124,3 +131,22 @@ func _on_timer_timeout3():
 func _on_fartBomb_pressed():
 	#attack = fart
 	pass
+func _on_leftDestination_body_entered(body):
+	$Sprite.animation = 'throw'
+	$Sprite.play()
+	
+
+
+func _on_Sprite_animation_finished():
+		$Sprite.animation = 'idle'
+		$Sprite.play()
+
+func _on_middleDestination_body_entered(body):
+	if(pos == 2):
+		$Sprite.animation = 'throw'
+		$Sprite.play()
+
+
+func _on_rightDestination_body_entered(body):
+	$Sprite.animation = 'throw'
+	$Sprite.play()
