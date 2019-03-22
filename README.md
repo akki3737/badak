@@ -1,12 +1,12 @@
 # badak
 ## Installation Steps
 
-Download the respective binary from the bin folder and install it.
-Currently export is availabe for:
--Android
--OSX
--WindowsOS
--Linux
+Download the respective binary from the bin folder and install it.\
+Currently export is availabe for:\
+-Android\
+-OSX\
+-WindowsOS\
+-Linux\
 
 ## Story behind the game
 
