@@ -1,7 +1,12 @@
 # badak
 ## Installation Steps
 
-Look for the apk file in bin of the beta branch
+Download the respective binary from the bin folder and install it.
+Currently export is availabe for:
+-Android
+-OSX
+-WindowsOS
+-Linux
 
 ## Story behind the game
 
