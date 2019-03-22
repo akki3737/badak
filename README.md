@@ -6,7 +6,7 @@ Currently export is availabe for:\
 -Android\
 -OSX\
 -WindowsOS\
--Linux\
+-Linux
 
 ## Story behind the game
 
